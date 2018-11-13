@@ -1,10 +1,10 @@
 <?php
-require "vendor/autoload.php";
-require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
+require "autoload.php";
+require_once('LINEBotTiny.php');
 
-$access_token = 'Q4Ivpqy+fEijDfwAnIDvN6PprOy69lxLVpnTia1q8Hhwgfz8csZFSVqiQvccWdZKcXxbSz6bL2rDJ2mRnszhJxg0psMNOuZwp200CzoWUhTawVgA3QnjIJ+3z3gYLRHoYGiUApr663b9qQWM93jwmwdB04t89/1O/w1cDnyilFU=';
-$channelSecret = '6c6ca6e38c984ba4b649dc6cf0a3c5fe';
-$idPush = 'U09793a2f585d3ca2c2e7fdbe41acea8e';
+$access_token = 'UidRKf6Z1fdHTrCD6guHC4b7gsB5Yy473jPRAP859lk0hMhkjP43Yo6+iIN8yK3w+DgxGRBmU9Bxox5uQ3cH3+NrLVPTVShQtTCCooYwabHS31e603iOPg7YFhxphDodcjMRt9M6C3PsRgw8cHUuXAdB04t89/1O/w1cDnyilFU=';
+$channelSecret = 'f4ef0d7818426f9dea36a66a70766bb2';
+$idPush = 'U43f202a367910d3b96229105d9ef5d1a';
 
 $content = file_get_contents('php://input');
 $events = json_decode($content, true);
@@ -13,6 +13,11 @@ $com = substr($content, 274, -5);
 $textmessagerobot = str_replace(" ","",$com);
 $i = 0;
 
+        $Topic = "NodeMCU1";
+         $lineMsg = "AAAAA";
+         getMqttfromlineMsg($Topic,$lineMsg);
+
+/*
 if (!is_null($events['events'])) {
   foreach ($events['events'] as $event) {
     if ($event['type'] == 'message' && $event['message']['type'] == 'text') {  
@@ -26,7 +31,7 @@ if (!is_null($events['events'])) {
    } 
   }
  } 
-
+*/
 function pubMqtt($topic,$msg){
    $APPID= "samickrock/";
    $KEY = "MC6kLl4SYiDW2qd";
